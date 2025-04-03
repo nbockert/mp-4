@@ -49,17 +49,24 @@ export default async function RecipeDetailPage({ params }: { params: { id: strin
             </>
         );
 
-    }catch(error: any){
+    }catch(error: unknown){
+        if (error instanceof Error) {
+            return (
+                <Box sx={{p: 4, maxWidth: 800, mx: 'auto', textAlign: 'center'}}>
+                    <Typography variant="h5" color="error">
+                        Oops! Something went wrong.
+                    </Typography>
+                    <Typography variant="body1">
+                        {error.message === 'API quota exceeded'
+                            ? 'You’ve exceeded the Spoonacular daily API limit. Try again later.'
+                            : 'We couldn’t load the recipe details. Please check back soon.'}
+                    </Typography>
+                </Box>
+            );
+        }
         return (
-            <Box sx={{ p: 4, maxWidth: 800, mx: 'auto', textAlign: 'center'}}>
-                <Typography variant="h5" color="error">
-                    Oops! Something went wrong.
-                </Typography>
-                <Typography variant="body1">
-                    {error.message === 'API quota exceeded'
-                        ? 'You’ve exceeded the Spoonacular daily API limit. Try again later.'
-                        : 'We couldn’t load the recipe details. Please check back soon.'}
-                </Typography>
+            <Box>
+                <Typography variant="body1">Something went wrong.</Typography>
             </Box>
         );
 
