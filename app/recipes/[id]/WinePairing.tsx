@@ -6,7 +6,7 @@ type WineDisplayProps = {
     inputWines: WineProduct[];
 };
 export default function WineDisplay({inputWines}: WineDisplayProps) {
-    console.log(inputWines);
+
     if (!inputWines) {
         return (
             <Typography sx={{ fontWeight: 600, color: '#914F1E', textAlign: 'center' }}>

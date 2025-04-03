@@ -5,8 +5,9 @@ import WineDisplay from "@/app/recipes/[id]/WinePairing";
 
 export default async function RecipeDetailPage({ params }: { params: { id: string } }) {
     try{
+        const { id } = await params
         const res = await fetch(
-            `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.API_KEY}&addWinePairing=true`,
+            `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.API_KEY}&addWinePairing=true`,
             { next: { revalidate: 60 } }
         );
         if (res.status === 402) {
@@ -16,7 +17,7 @@ export default async function RecipeDetailPage({ params }: { params: { id: strin
             throw new Error(`Failed to fetch recipe: ${res.statusText}`);
         }
         const recipe = await res.json();
-        console.log(recipe);
+
         return (
             <>
             <Link href='/'>
