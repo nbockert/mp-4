@@ -22,7 +22,7 @@ export default function RecipePreview({ recipe }: RecipeCardProps) {
 
 
     return (
-        <Card sx={{ maxWidth: 600, width: '100%', mx: 'auto',cursor: 'pointer' }}   onClick={() => router.push(`/recipes/${recipe.id}`)}>
+        <Card sx={{ maxWidth: 600, width: '100%', mx: 'auto',cursor: 'pointer' }}   onClick={() => router.push(`/recipes?id=${recipe.id}`)}>
             <CardMedia component="img" height="200" image={recipe.image} alt={recipe.title} />
             <CardContent
                 sx={{
