@@ -22,7 +22,7 @@ export default async function RecipeDetailPage({id}:{id:string}) {
 
         return (
             <>
-                <Link href='/public'>
+                <Link href='/'>
                     <Typography variant="h4" sx={{textAlign: 'left', mb: 4, fontSize: '1.25rem',color:'#508D4E',m:2,fontWeight: 300}}>Home</Typography>
 
                 </Link>
