@@ -7,7 +7,7 @@ type WineDisplayProps = {
 };
 export default function WineDisplay({inputWines}: WineDisplayProps) {
 
-    if (inputWines.length===0) {
+    if (!inputWines ||inputWines.length===0) {
         return (
             <Typography sx={{ fontWeight: 600, color: '#914F1E', textAlign: 'center' }}>
                 No Wines Found
